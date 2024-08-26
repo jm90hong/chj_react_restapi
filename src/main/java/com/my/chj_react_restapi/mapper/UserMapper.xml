@@ -1,0 +1,41 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">	
+	 		
+	
+	
+	<insert id="save" parameterType="User">
+		insert into user
+		(
+			user_code,
+			first_name,
+			last_name,
+			birth,
+			id,
+			pw,
+			nick,
+			gender,
+			tel,
+			created_date
+		)
+		values
+		(
+			#{user_code},
+			#{first_name},
+			#{last_name},
+			#{birth},
+			#{id},
+			MD5(#{pw}),
+			#{nick},
+			#{gender},
+			#{tel},
+			sysdate()
+		)
+	</insert>
+	
+	
+	
+	<select id="findAll" resultType="User">
+		select * from user
+	</select>
+	
+</mapper>
